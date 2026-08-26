@@ -44,11 +44,20 @@ export const metadata: Metadata = {
     siteName: "석촌",
     locale: "ko_KR",
     type: "website",
+    images: [
+      {
+        url: "/images/store-exterior.webp",
+        width: 1536,
+        height: 2048,
+        alt: "석촌 매장 입구 전경",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: siteTitle,
     description: siteDescription,
+    images: ["/images/store-exterior.webp"],
   },
 };
 

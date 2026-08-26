@@ -1,7 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { business, menus, trustSignals } from "@/lib/content";
 import { PhoneCTA } from "@/components/PhoneCTA";
-import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 import { JsonLd, buildRestaurantSchema } from "@/lib/schema";
 
 export default function Home() {
@@ -11,12 +11,15 @@ export default function Home() {
 
       {/* Hero */}
       <section className="relative h-[68vh] min-h-[460px] flex items-end overflow-hidden">
-        <ImagePlaceholder
-          alt="석촌 매장 전경 사진 (준비 중)"
+        <Image
+          src="/images/store-exterior.webp"
+          alt="석촌 매장 입구 전경"
           fill
-          dark
-          className="absolute inset-0"
+          priority
+          className="object-cover"
+          sizes="100vw"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/10" />
         <div className="relative z-10 mx-auto max-w-5xl w-full px-4 pb-14">
           <p className="text-xs md:text-sm tracking-[0.3em] uppercase text-white/70">
             Since {business.foundedYearApprox}

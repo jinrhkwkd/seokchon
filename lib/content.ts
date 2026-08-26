@@ -50,7 +50,13 @@ export const business = {
   naverPlaceUrl: "https://m.place.naver.com/restaurant/13421560/home",
 };
 
-export const menus = [
+export const menus: {
+  slug: string;
+  name: string;
+  developedInHouse: boolean;
+  description: string;
+  photo?: string;
+}[] = [
   {
     slug: "hanbang-baeksuk",
     name: "한방백숙",
@@ -71,6 +77,7 @@ export const menus = [
     developedInHouse: false,
     description:
       "누룽지백숙에 전복을 더한 메뉴입니다. 백숙과 전복을 함께 끓여 깊은 맛을 낸 국물에 누룽지를 넣어 마무리합니다.",
+    photo: "/images/jeonbok-nurungji-baeksuk.webp",
   },
   {
     slug: "neungi-beoseot-baeksuk",

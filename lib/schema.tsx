@@ -7,6 +7,7 @@ export function buildRestaurantSchema() {
     "@context": "https://schema.org",
     "@type": "Restaurant",
     name: business.name,
+    image: `${siteUrl}/images/store-exterior.webp`,
     servesCuisine: "한식, 백숙, 삼계탕",
     address: {
       "@type": "PostalAddress",

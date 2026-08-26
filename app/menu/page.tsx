@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { business, menus } from "@/lib/content";
 import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 import { PhoneCTA } from "@/components/PhoneCTA";
@@ -29,11 +30,23 @@ export default function MenuPage() {
             key={menu.slug}
             className="rounded-lg border border-border bg-background-alt p-6"
           >
-            <ImagePlaceholder
-              alt={`${menu.name} 사진 (준비 중)`}
-              aspect="aspect-[4/3]"
-              className="mb-5"
-            />
+            {menu.photo ? (
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg mb-5">
+                <Image
+                  src={menu.photo}
+                  alt={`${menu.name} 사진`}
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 640px) 50vw, 100vw"
+                />
+              </div>
+            ) : (
+              <ImagePlaceholder
+                alt={`${menu.name} 사진 (준비 중)`}
+                aspect="aspect-[4/3]"
+                className="mb-5"
+              />
+            )}
             <h2 className="font-serif-kr text-xl font-semibold text-foreground">
               {menu.name}
               {menu.developedInHouse && (
