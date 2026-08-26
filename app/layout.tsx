@@ -32,6 +32,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  verification: {
+    other: {
+      "naver-site-verification": "7e40d9bd18beb606db07648e23dfb4b1f3d734c4",
+    },
+  },
   openGraph: {
     title: siteTitle,
     description: siteDescription,
