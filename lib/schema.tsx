@@ -17,6 +17,7 @@ export function buildRestaurantSchema() {
     },
     telephone: business.phone,
     url: siteUrl,
+    sameAs: [business.naverPlaceUrl],
     hasMenu: {
       "@type": "Menu",
       hasMenuSection: {
@@ -59,6 +60,7 @@ export function buildLocalBusinessSchema() {
     },
     telephone: business.phone,
     url: siteUrl,
+    sameAs: [business.naverPlaceUrl],
   };
 }
 

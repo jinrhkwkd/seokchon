@@ -28,6 +28,7 @@ export const business = {
   reviewCount: 740,
   reviewCountYear: 2025,
   reviewSource: "네이버 플레이스",
+  naverPlaceUrl: "https://m.place.naver.com/restaurant/13421560/home",
 };
 
 export const menus = [

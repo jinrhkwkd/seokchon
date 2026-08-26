@@ -16,6 +16,16 @@ export function Footer() {
           </a>
         </p>
         <p>영업 종료: {business.closingTime}</p>
+        <p>
+          <a
+            href={business.naverPlaceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-accent"
+          >
+            네이버 플레이스에서 보기
+          </a>
+        </p>
         <p className="pt-2 text-xs">
           © {new Date().getFullYear()} {business.name}. All rights reserved.
         </p>
