@@ -103,8 +103,8 @@ export default function Home() {
             </dd>
           </div>
           <div>
-            <dt className="font-medium text-foreground">영업 종료</dt>
-            <dd>{business.closingTime}</dd>
+            <dt className="font-medium text-foreground">영업시간</dt>
+            <dd>{business.openingTime} ~ {business.closingTime}</dd>
           </div>
           <div>
             <dt className="font-medium text-foreground">주차</dt>

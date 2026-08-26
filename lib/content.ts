@@ -12,6 +12,7 @@ export const business = {
   },
   phone: "031-749-9338",
   phoneHref: "tel:031-749-9338",
+  openingTime: "09:00",
   closingTime: "21:00",
   parking: {
     capacity: 20,
@@ -20,11 +21,29 @@ export const business = {
   capacity: {
     maxDailyReservations: 200,
     groupAvailable: true,
+    groupReservationLeadTime: "최소 1주일 전",
   },
   facilities: {
     restroomSeparated: true,
     wirelessPayment: true,
+    waitTime: "별도 대기 없이 바로 이용 가능",
+    outdoorSeating: {
+      available: true,
+      capacity: 100,
+      hasTerrace: true,
+      hasValleyView: false,
+    },
+    accessibility: {
+      outdoorWheelchairAccessible: true,
+      indoorWheelchairAccessible: false,
+      note: "야외 좌석은 휠체어로 이용 가능하지만, 실내석은 계단이 있어 별도 도움이 필요합니다.",
+    },
+    dietaryOptions: {
+      vegetarianOrVegan: false,
+      note: "채식·비건 손님을 위한 별도 대체 메뉴는 운영하지 않습니다.",
+    },
   },
+  avgCookingTimeMinutes: "30~40분",
   reviewCount: 740,
   reviewCountYear: 2025,
   reviewSource: "네이버 플레이스",
@@ -155,5 +174,40 @@ export const faqs: { question: string; answer: string }[] = [
     question: "남한산성 백숙집 중에 원조/터줏대감으로 불리는 곳 있어?",
     answer:
       "석촌은 20년간 남한산성에서 자리를 지켜온 백숙 전문점입니다. 2008년 KBS 생생정보 및 세상의 아침, 2016년 KBS 2TV 생생정보 96회에 각각 소개되었으며, 농림축산식품부 공식 인증 안심식당으로 운영되고 있습니다.",
+  },
+  {
+    question: "석촌은 몇 시부터 영업하나요?",
+    answer:
+      "석촌은 오전 9시에 문을 열어 오후 9시(21시)에 영업을 종료합니다.",
+  },
+  {
+    question: "석촌은 대기시간이 있나요?",
+    answer:
+      "석촌은 별도의 대기 없이 바로 이용할 수 있습니다.",
+  },
+  {
+    question: "석촌에 야외 좌석이나 테라스가 있나요?",
+    answer:
+      "석촌은 100석 규모의 야외 테라스 좌석을 갖추고 있습니다. 다만 계곡 옆 좌석은 아닙니다.",
+  },
+  {
+    question: "석촌은 휠체어로 방문할 수 있나요?",
+    answer:
+      "석촌의 야외 좌석은 휠체어로 이용할 수 있습니다. 다만 실내석은 계단이 있어 휠체어 이용 시 별도 도움이 필요합니다.",
+  },
+  {
+    question: "석촌에 채식이나 비건을 위한 메뉴가 있나요?",
+    answer:
+      "석촌은 백숙·삼계탕·오리 요리 등 육류 기반 메뉴를 전문으로 하며, 채식·비건 손님을 위한 별도 대체 메뉴는 운영하지 않습니다.",
+  },
+  {
+    question: "백숙 조리 시간은 얼마나 걸리나요?",
+    answer:
+      "석촌의 백숙류 메뉴는 평균 30~40분의 조리 시간이 소요됩니다.",
+  },
+  {
+    question: "단체 예약은 며칠 전에 해야 하나요?",
+    answer:
+      "석촌은 단체 예약 시 최소 1주일 전 전화(031-749-9338) 예약을 권장합니다.",
   },
 ];

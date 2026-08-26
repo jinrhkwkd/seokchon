@@ -41,6 +41,7 @@ export function buildRestaurantSchema() {
         "Saturday",
         "Sunday",
       ],
+      opens: business.openingTime,
       closes: business.closingTime,
     },
   };

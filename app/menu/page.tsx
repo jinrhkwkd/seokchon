@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { menus } from "@/lib/content";
+import { business, menus } from "@/lib/content";
 import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 import { PhoneCTA } from "@/components/PhoneCTA";
 
@@ -18,7 +18,8 @@ export default function MenuPage() {
       <h1 className="text-3xl font-bold text-foreground">메뉴 소개</h1>
       <p className="mt-4 text-foreground-muted">
         석촌은 백숙·삼계탕을 중심으로 총 6종의 메뉴를 판매합니다. 이 중 한방백숙과
-        누룽지백숙은 석촌이 직접 개발한 메뉴입니다.
+        누룽지백숙은 석촌이 직접 개발한 메뉴입니다. 백숙류 메뉴는 평균{" "}
+        {business.avgCookingTimeMinutes}의 조리 시간이 소요됩니다.
       </p>
 
       <div className="mt-10 grid gap-8 sm:grid-cols-2">

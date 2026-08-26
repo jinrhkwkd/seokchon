@@ -15,7 +15,7 @@ export function Footer() {
             {business.phone}
           </a>
         </p>
-        <p>영업 종료: {business.closingTime}</p>
+        <p>영업시간: {business.openingTime} ~ {business.closingTime}</p>
         <p>
           <a
             href={business.naverPlaceUrl}

@@ -38,8 +38,10 @@ export default function LocationPage() {
             </dd>
           </div>
           <div>
-            <dt className="font-medium text-foreground">영업 종료</dt>
-            <dd>{business.closingTime}</dd>
+            <dt className="font-medium text-foreground">영업시간</dt>
+            <dd>
+              {business.openingTime} ~ {business.closingTime}, {business.facilities.waitTime}
+            </dd>
           </div>
           <div>
             <dt className="font-medium text-foreground">주차 안내</dt>
@@ -51,8 +53,24 @@ export default function LocationPage() {
             <dt className="font-medium text-foreground">예약 및 단체 이용</dt>
             <dd>
               하루 최대 {business.capacity.maxDailyReservations}명까지 예약을 받고 있으며,
-              단체 이용이 가능합니다. 예약은 전화로만 받습니다.
+              단체 이용이 가능합니다. 단체 예약은 {business.capacity.groupReservationLeadTime}{" "}
+              전화 예약을 권장합니다. 예약은 전화로만 받습니다.
             </dd>
+          </div>
+          <div>
+            <dt className="font-medium text-foreground">야외 좌석</dt>
+            <dd>
+              {business.facilities.outdoorSeating.capacity}석 규모의 야외 테라스 좌석을
+              갖추고 있습니다.
+            </dd>
+          </div>
+          <div>
+            <dt className="font-medium text-foreground">휠체어 접근성</dt>
+            <dd>{business.facilities.accessibility.note}</dd>
+          </div>
+          <div>
+            <dt className="font-medium text-foreground">식이 제한 안내</dt>
+            <dd>{business.facilities.dietaryOptions.note}</dd>
           </div>
           <div>
             <dt className="font-medium text-foreground">편의 시설</dt>
