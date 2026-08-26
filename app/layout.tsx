@@ -29,6 +29,9 @@ export const metadata: Metadata = {
     template: "%s | 석촌",
   },
   description: siteDescription,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: siteTitle,
     description: siteDescription,

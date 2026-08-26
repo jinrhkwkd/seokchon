@@ -17,7 +17,6 @@ export function buildRestaurantSchema() {
     },
     telephone: business.phone,
     url: siteUrl,
-    priceRange: "₩₩",
     hasMenu: {
       "@type": "Menu",
       hasMenuSection: {

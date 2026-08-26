@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "자주 묻는 질문",
   description:
     "남한산성 백숙 맛집, 주차, 한방백숙, 단체 예약 등 석촌에 대해 자주 묻는 질문과 답변 모음.",
+  alternates: {
+    canonical: "/faq",
+  },
 };
 
 export default function FaqPage() {

@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "방송·인증 이력",
   description:
     "석촌의 KBS 방송 출연 2회 이력과 농림축산식품부 공식 인증 안심식당 정보를 소개합니다.",
+  alternates: {
+    canonical: "/media",
+  },
 };
 
 export default function MediaPage() {

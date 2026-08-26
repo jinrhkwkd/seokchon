@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "오시는 길",
   description:
     "석촌 오시는 길 안내. 경기 광주시 남한산성면 남한산성로780번길 33, 주차 20대 가능, 남한산성 로타리에서 북문 방향.",
+  alternates: {
+    canonical: "/location",
+  },
 };
 
 export default function LocationPage() {

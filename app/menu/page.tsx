@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "메뉴 소개",
   description:
     "석촌의 대표 메뉴 6종 소개. 직접 개발한 한방백숙·누룽지백숙을 비롯해 전복누룽지백숙, 능이버섯백숙, 오리주물럭, 닭볶음탕을 판매합니다.",
+  alternates: {
+    canonical: "/menu",
+  },
 };
 
 export default function MenuPage() {
