@@ -14,7 +14,8 @@ export const metadata: Metadata = {
 export default function MediaPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
-      <h1 className="text-3xl font-bold text-foreground">방송·인증 이력</h1>
+      <p className="text-xs font-semibold tracking-[0.25em] uppercase text-accent">Press</p>
+      <h1 className="mt-2 text-3xl md:text-4xl font-bold text-foreground">방송·인증 이력</h1>
       <p className="mt-4 text-foreground-muted">
         석촌은 정부 공식 인증과 방송 출연 이력을 통해 신뢰를 검증받아 왔습니다.
       </p>

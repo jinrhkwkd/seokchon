@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
-import { Noto_Serif_KR, Noto_Sans_KR } from "next/font/google";
+import { Nanum_Myeongjo, Nanum_Gothic } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd, buildLocalBusinessSchema, siteUrl } from "@/lib/schema";
 
-const notoSerifKr = Noto_Serif_KR({
-  variable: "--font-noto-serif-kr",
+const nanumMyeongjo = Nanum_Myeongjo({
+  variable: "--font-nanum-myeongjo",
   subsets: ["latin"],
-  weight: ["500", "700"],
+  weight: ["400", "700", "800"],
 });
 
-const notoSansKr = Noto_Sans_KR({
-  variable: "--font-noto-sans-kr",
+const nanumGothic = Nanum_Gothic({
+  variable: "--font-nanum-gothic",
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "700", "800"],
 });
 
 const siteTitle = "석촌 | 남한산성 백숙·삼계탕 전문 한정식집";
@@ -56,7 +56,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="ko"
-      className={`${notoSerifKr.variable} ${notoSansKr.variable} h-full`}
+      className={`${nanumMyeongjo.variable} ${nanumGothic.variable} h-full`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col antialiased">

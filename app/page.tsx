@@ -10,40 +10,41 @@ export default function Home() {
       <JsonLd data={buildRestaurantSchema()} />
 
       {/* Hero */}
-      <section className="border-b border-border bg-background-alt">
-        <div className="mx-auto max-w-5xl px-4 py-16 grid gap-10 md:grid-cols-2 md:items-center">
-          <div>
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground">
-              남한산성 {business.yearsInOperation}년 전통 백숙 전문점, {business.name}
-            </h1>
-            <p className="mt-4 text-lg text-foreground-muted">
-              {business.name}은 경기 광주시 남한산성면에서 {business.yearsInOperation}년간
-              백숙·삼계탕을 전문으로 운영해온 한정식집입니다. 농림축산식품부 공식 인증
-              안심식당이며, KBS 방송에 두 차례 소개되었습니다.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <PhoneCTA />
-              <Link
-                href="/menu"
-                className="inline-flex items-center justify-center rounded-md border border-border px-6 py-3 font-medium text-foreground hover:bg-background transition-colors"
-              >
-                메뉴 보기
-              </Link>
-            </div>
+      <section className="relative h-[68vh] min-h-[460px] flex items-end overflow-hidden">
+        <ImagePlaceholder
+          alt="석촌 매장 전경 사진 (준비 중)"
+          fill
+          dark
+          className="absolute inset-0"
+        />
+        <div className="relative z-10 mx-auto max-w-5xl w-full px-4 pb-14">
+          <p className="text-xs md:text-sm tracking-[0.3em] uppercase text-white/70">
+            Since {business.foundedYearApprox}
+          </p>
+          <h1 className="mt-4 font-serif-kr text-4xl md:text-5xl font-bold leading-[1.25] text-white text-balance">
+            남한산성 {business.yearsInOperation}년 전통<br />
+            백숙 전문점, {business.name}
+          </h1>
+          <p className="mt-5 max-w-xl text-white/80 text-base md:text-lg">
+            농림축산식품부 공식 인증 안심식당이며, KBS 방송에 두 차례 소개된
+            남한산성 백숙 전문 한정식집입니다.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <PhoneCTA />
+            <Link
+              href="/menu"
+              className="inline-flex items-center justify-center rounded-md border border-white/40 px-6 py-3 font-medium text-white hover:bg-white/10 transition-colors"
+            >
+              메뉴 보기
+            </Link>
           </div>
-          <ImagePlaceholder
-            alt="석촌 매장 전경 사진 (준비 중)"
-            caption="실제 매장 사진은 추후 업데이트 예정입니다."
-          />
         </div>
       </section>
 
       {/* 신뢰 신호 */}
-      <section className="mx-auto max-w-5xl px-4 py-16">
-        <h2 className="text-2xl font-bold text-foreground">
-          숫자와 기록으로 확인하는 석촌
-        </h2>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2">
+      <section className="mx-auto max-w-5xl px-4 py-20">
+        <SectionHeading eyebrow="Trust" title="숫자와 기록으로 확인하는 석촌" />
+        <div className="mt-10 grid gap-6 sm:grid-cols-2">
           <TrustCard title="농림축산식품부 공식 인증 안심식당">
             {trustSignals.certification.description}
           </TrustCard>
@@ -63,33 +64,42 @@ export default function Home() {
 
       {/* 대표 메뉴 요약 */}
       <section className="bg-background-alt border-y border-border">
-        <div className="mx-auto max-w-5xl px-4 py-16">
+        <div className="mx-auto max-w-5xl px-4 py-20">
           <div className="flex items-end justify-between gap-4">
-            <h2 className="text-2xl font-bold text-foreground">대표 메뉴</h2>
-            <Link href="/menu" className="text-sm text-accent hover:text-accent-hover">
+            <SectionHeading eyebrow="Menu" title="대표 메뉴" />
+            <Link
+              href="/menu"
+              className="text-sm text-accent hover:text-accent-hover whitespace-nowrap"
+            >
               전체 메뉴 보기 →
             </Link>
           </div>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+          <ul className="mt-10 divide-y divide-border">
             {menus.map((menu) => (
-              <div
-                key={menu.slug}
-                className="rounded-lg border border-border bg-background p-5"
-              >
-                <h3 className="font-serif-kr text-lg font-semibold text-foreground">
-                  {menu.name}
-                </h3>
-                <p className="mt-2 text-sm text-foreground-muted">{menu.description}</p>
-              </div>
+              <li key={menu.slug} className="flex items-baseline justify-between gap-6 py-5">
+                <div>
+                  <h3 className="font-serif-kr text-lg font-semibold text-foreground">
+                    {menu.name}
+                    {menu.developedInHouse && (
+                      <span className="ml-2 text-gold align-middle" title="석촌 직접 개발">
+                        ★
+                      </span>
+                    )}
+                  </h3>
+                  <p className="mt-1.5 text-sm text-foreground-muted max-w-2xl">
+                    {menu.description}
+                  </p>
+                </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
       {/* NAP 정보 */}
-      <section className="mx-auto max-w-5xl px-4 py-16">
-        <h2 className="text-2xl font-bold text-foreground">오시는 정보</h2>
-        <dl className="mt-6 grid gap-4 sm:grid-cols-2 text-foreground-muted">
+      <section className="mx-auto max-w-5xl px-4 py-20">
+        <SectionHeading eyebrow="Visit" title="오시는 정보" />
+        <dl className="mt-8 grid gap-6 sm:grid-cols-2 text-foreground-muted">
           <div>
             <dt className="font-medium text-foreground">주소</dt>
             <dd>{business.address.full}</dd>
@@ -121,6 +131,17 @@ export default function Home() {
         </Link>
       </section>
     </>
+  );
+}
+
+function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
+  return (
+    <div>
+      <p className="text-xs font-semibold tracking-[0.25em] uppercase text-accent">
+        {eyebrow}
+      </p>
+      <h2 className="mt-2 text-2xl md:text-3xl font-bold text-foreground">{title}</h2>
+    </div>
   );
 }
 

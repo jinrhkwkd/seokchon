@@ -16,7 +16,8 @@ export default function FaqPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
       <JsonLd data={buildFaqSchema()} />
-      <h1 className="text-3xl font-bold text-foreground">자주 묻는 질문</h1>
+      <p className="text-xs font-semibold tracking-[0.25em] uppercase text-accent">FAQ</p>
+      <h1 className="mt-2 text-3xl md:text-4xl font-bold text-foreground">자주 묻는 질문</h1>
       <p className="mt-4 text-foreground-muted">
         남한산성 백숙집을 찾는 분들이 자주 묻는 질문에 석촌이 직접 답합니다.
       </p>

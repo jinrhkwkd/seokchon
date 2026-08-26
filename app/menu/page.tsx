@@ -15,11 +15,12 @@ export const metadata: Metadata = {
 export default function MenuPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-16">
-      <h1 className="text-3xl font-bold text-foreground">메뉴 소개</h1>
-      <p className="mt-4 text-foreground-muted">
+      <p className="text-xs font-semibold tracking-[0.25em] uppercase text-accent">Menu</p>
+      <h1 className="mt-2 text-3xl md:text-4xl font-bold text-foreground">메뉴 소개</h1>
+      <p className="mt-4 text-foreground-muted max-w-2xl">
         석촌은 백숙·삼계탕을 중심으로 총 6종의 메뉴를 판매합니다. 이 중 한방백숙과
-        누룽지백숙은 석촌이 직접 개발한 메뉴입니다. 백숙류 메뉴는 평균{" "}
-        {business.avgCookingTimeMinutes}의 조리 시간이 소요됩니다.
+        누룽지백숙(<span className="text-gold">★</span> 표시)은 석촌이 직접 개발한 메뉴입니다.
+        백숙류 메뉴는 평균 {business.avgCookingTimeMinutes}의 조리 시간이 소요됩니다.
       </p>
 
       <div className="mt-10 grid gap-8 sm:grid-cols-2">
@@ -31,17 +32,19 @@ export default function MenuPage() {
             <ImagePlaceholder
               alt={`${menu.name} 사진 (준비 중)`}
               aspect="aspect-[4/3]"
-              className="mb-4"
+              className="mb-5"
             />
             <h2 className="font-serif-kr text-xl font-semibold text-foreground">
               {menu.name}
               {menu.developedInHouse && (
-                <span className="ml-2 align-middle rounded-full bg-accent/10 px-2 py-0.5 text-xs font-medium text-accent">
-                  석촌 직접 개발
+                <span className="ml-2 text-gold" title="석촌 직접 개발">
+                  ★
                 </span>
               )}
             </h2>
-            <p className="mt-2 text-sm text-foreground-muted">{menu.description}</p>
+            <p className="mt-2 text-sm text-foreground-muted leading-relaxed">
+              {menu.description}
+            </p>
           </article>
         ))}
       </div>

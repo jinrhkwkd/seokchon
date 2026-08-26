@@ -3,27 +3,29 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #faf6f0;
-  --background-alt: #f2e9da;
-  --foreground: #2b2018;
-  --foreground-muted: #6b5c4d;
-  --border: #ddceb8;
-  --accent: #8a4a24;
-  --accent-hover: #6f3b1c;
-  --accent-foreground: #fdf8f1;
-  --gold: #a9782f;
+  --background: #f7f2e7;
+  --background-alt: #efe6d2;
+  --foreground: #262220;
+  --foreground-muted: #6b6258;
+  --border: #ddd0b0;
+  --accent: #a97a1c;
+  --accent-hover: #8a6216;
+  --accent-foreground: #fffaf0;
+  --gold: #c9a227;
+  --grain-opacity: 0.05;
 }
 
 .dark {
-  --background: #1b1510;
-  --background-alt: #241c15;
-  --foreground: #f2e9dc;
-  --foreground-muted: #c3b3a0;
-  --border: #3c2e21;
-  --accent: #c98a4b;
-  --accent-hover: #dba066;
-  --accent-foreground: #1b1510;
-  --gold: #d3a75a;
+  --background: #16130f;
+  --background-alt: #201b14;
+  --foreground: #f0ebe0;
+  --foreground-muted: #b3a996;
+  --border: #33291c;
+  --accent: #d4af37;
+  --accent-hover: #e6c25c;
+  --accent-foreground: #16130f;
+  --gold: #e0bf5a;
+  --grain-opacity: 0.03;
 }
 
 @theme inline {
@@ -36,12 +38,18 @@
   --color-accent-hover: var(--accent-hover);
   --color-accent-foreground: var(--accent-foreground);
   --color-gold: var(--gold);
-  --font-serif-kr: var(--font-noto-serif-kr);
-  --font-sans-kr: var(--font-noto-sans-kr);
+  --font-serif-kr: var(--font-nanum-myeongjo);
+  --font-sans-kr: var(--font-nanum-gothic);
 }
 
 body {
-  background: var(--color-background);
+  background-color: var(--color-background);
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(0, 0, 0, var(--grain-opacity)) 1px,
+    transparent 0
+  );
+  background-size: 20px 20px;
   color: var(--color-foreground);
   font-family: var(--font-sans-kr), sans-serif;
   word-break: keep-all;
@@ -51,4 +59,5 @@ body {
 h1, h2, h3, h4 {
   font-family: var(--font-serif-kr), serif;
   word-break: keep-all;
+  letter-spacing: -0.01em;
 }

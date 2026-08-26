@@ -2,6 +2,7 @@ import Link from "next/link";
 import { business } from "@/lib/content";
 import { PhoneCTA } from "./PhoneCTA";
 import { ThemeToggle } from "./ThemeToggle";
+import { RoofMark } from "./RoofMark";
 
 const navLinks = [
   { href: "/", label: "홈" },
@@ -13,17 +14,20 @@ const navLinks = [
 
 export function Header() {
   return (
-    <header className="border-b border-border bg-background">
+    <header className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="mx-auto max-w-5xl px-4 py-4 flex items-center justify-between gap-4">
-        <Link href="/" className="font-serif-kr text-xl font-bold text-foreground">
-          {business.name}
+        <Link href="/" className="flex items-center gap-2 group">
+          <RoofMark className="h-6 w-10 text-accent transition-transform group-hover:-translate-y-0.5" />
+          <span className="font-serif-kr text-xl font-bold text-foreground tracking-tight">
+            {business.name}
+          </span>
         </Link>
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-7">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm text-foreground-muted hover:text-accent transition-colors"
+              className="text-sm tracking-wide text-foreground-muted hover:text-accent transition-colors"
             >
               {link.label}
             </Link>

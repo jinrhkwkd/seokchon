@@ -15,7 +15,8 @@ export const metadata: Metadata = {
 export default function LocationPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-16">
-      <h1 className="text-3xl font-bold text-foreground">오시는 길</h1>
+      <p className="text-xs font-semibold tracking-[0.25em] uppercase text-accent">Visit</p>
+      <h1 className="mt-2 text-3xl md:text-4xl font-bold text-foreground">오시는 길</h1>
 
       <div className="mt-8 grid gap-10 md:grid-cols-2">
         <ImagePlaceholder
