@@ -5,8 +5,8 @@ import { ThemeToggle } from "./ThemeToggle";
 import { RoofMark } from "./RoofMark";
 
 const navLinks = [
-  { href: "/", label: "홈" },
   { href: "/menu", label: "메뉴 소개" },
+  { href: "/group", label: "단체·대형 예약" },
   { href: "/faq", label: "자주 묻는 질문" },
   { href: "/blog", label: "블로그" },
   { href: "/location", label: "오시는 길" },

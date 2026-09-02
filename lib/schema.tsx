@@ -15,11 +15,13 @@ export function buildRestaurantSchema() {
       streetAddress: business.address.streetAddress,
       addressLocality: business.address.locality,
       addressRegion: business.address.region,
+      postalCode: business.address.postalCode,
       addressCountry: "KR",
     },
     telephone: business.phone,
     url: siteUrl,
     sameAs: [business.naverPlaceUrl],
+    paymentAccepted: business.facilities.paymentMethods,
     hasMenu: {
       "@type": "Menu",
       hasMenuSection: {
@@ -29,6 +31,11 @@ export function buildRestaurantSchema() {
           "@type": "MenuItem",
           name: menu.name,
           description: menu.description,
+          offers: {
+            "@type": "Offer",
+            price: String(menu.price),
+            priceCurrency: "KRW",
+          },
         })),
       },
     },
@@ -59,6 +66,7 @@ export function buildLocalBusinessSchema() {
       streetAddress: business.address.streetAddress,
       addressLocality: business.address.locality,
       addressRegion: business.address.region,
+      postalCode: business.address.postalCode,
       addressCountry: "KR",
     },
     telephone: business.phone,

@@ -55,6 +55,12 @@ export default function MenuPage() {
                 </span>
               )}
             </h2>
+            <p className="mt-1 font-serif-kr text-lg font-bold text-accent">
+              {menu.price.toLocaleString("ko-KR")}원
+              <span className="ml-1 text-xs font-normal text-foreground-muted">
+                / 한 마리
+              </span>
+            </p>
             <p className="mt-2 text-sm text-foreground-muted leading-relaxed">
               {menu.description}
             </p>

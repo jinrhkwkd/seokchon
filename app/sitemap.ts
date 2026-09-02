@@ -3,7 +3,15 @@ import { siteUrl } from "@/lib/schema";
 import { getAllPosts } from "@/lib/posts";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/menu", "/faq", "/location", "/media", "/blog"];
+  const staticRoutes = [
+    "",
+    "/menu",
+    "/group",
+    "/faq",
+    "/location",
+    "/media",
+    "/blog",
+  ];
   const staticEntries = staticRoutes.map((route) => ({
     url: `${siteUrl}${route}`,
     lastModified: new Date(),
