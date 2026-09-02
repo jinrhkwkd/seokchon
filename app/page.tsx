@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { business, menus, trustSignals } from "@/lib/content";
 import { PhoneCTA } from "@/components/PhoneCTA";
@@ -10,33 +9,46 @@ export default function Home() {
       <JsonLd data={buildRestaurantSchema()} />
 
       {/* Hero */}
-      <section className="relative h-[68vh] min-h-[460px] flex items-end overflow-hidden">
-        <Image
-          src="/images/store-exterior.webp"
-          alt="석촌 매장 입구 전경"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/10" />
-        <div className="relative z-10 mx-auto max-w-5xl w-full px-4 pb-14">
-          <p className="text-xs md:text-sm tracking-[0.3em] uppercase text-white/70">
+      <section className="relative flex h-[86vh] min-h-[520px] items-end overflow-hidden">
+        <video
+          className="hero-media absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/images/store-exterior.webp"
+          aria-label="석촌의 백숙이 끓고 있는 영상"
+        >
+          <source src="/videos/baeksuk-hero.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/20" />
+        <div className="relative z-10 mx-auto w-full max-w-5xl px-4 pb-16">
+          <p
+            className="hero-rise text-xs tracking-[0.3em] text-white/70 uppercase md:text-sm"
+            style={{ animationDelay: "0s" }}
+          >
             Since {business.foundedYearApprox}
           </p>
-          <h1 className="mt-4 font-serif-kr text-4xl md:text-5xl font-bold leading-[1.25] text-white text-balance">
+          <h1 className="hero-title mt-4 font-serif-kr text-4xl leading-[1.25] font-bold text-balance text-white md:text-5xl">
             남한산성 {business.yearsInOperation}년 전통<br />
-            백숙 전문점, {business.name}
+            백숙 전문점 {business.name}
           </h1>
-          <p className="mt-5 max-w-xl text-white/80 text-base md:text-lg">
+          <p
+            className="hero-rise mt-5 max-w-xl text-base text-white/80 md:text-lg"
+            style={{ animationDelay: "0.55s" }}
+          >
             농림축산식품부 공식 인증 안심식당이며, KBS 방송에 두 차례 소개된
             남한산성 백숙 전문 한정식집입니다.
           </p>
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div
+            className="hero-rise mt-8 flex flex-wrap gap-4"
+            style={{ animationDelay: "0.75s" }}
+          >
             <PhoneCTA />
             <Link
               href="/menu"
-              className="inline-flex items-center justify-center rounded-md border border-white/40 px-6 py-3 font-medium text-white hover:bg-white/10 transition-colors"
+              className="inline-flex items-center justify-center rounded-md border border-white/40 px-6 py-3 font-medium text-white transition-colors hover:bg-white/10"
             >
               메뉴 보기
             </Link>
