@@ -1,4 +1,5 @@
 import { business, faqs, menus } from "./content";
+import type { Post } from "./posts";
 
 export const siteUrl = "https://seokchon.vercel.app";
 
@@ -81,11 +82,85 @@ export function buildFaqSchema() {
   };
 }
 
+export function buildBreadcrumbSchema(items: { name: string; url: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: `${siteUrl}${item.url}`,
+    })),
+  };
+}
+
+export function buildBlogPostingSchema(post: Post) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    datePublished: post.publishedAt,
+    dateModified: post.updatedAt ?? post.publishedAt,
+    inLanguage: "ko-KR",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${siteUrl}/blog/${post.slug}`,
+    },
+    author: {
+      "@type": "Organization",
+      name: business.name,
+      url: siteUrl,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: business.name,
+      url: siteUrl,
+    },
+  };
+}
+
+export function buildFaqPageSchema(items: { question: string; answer: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+}
+
+export function buildBlogListingSchema(blogPosts: Post[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: `${business.name} 블로그`,
+    url: `${siteUrl}/blog`,
+    inLanguage: "ko-KR",
+    blogPost: blogPosts.map((post) => ({
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.description,
+      datePublished: post.publishedAt,
+      dateModified: post.updatedAt ?? post.publishedAt,
+      url: `${siteUrl}/blog/${post.slug}`,
+    })),
+  };
+}
+
 export function JsonLd({ data }: { data: object }) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(data).replace(/</g, "\\u003c"),
+      }}
     />
   );
 }

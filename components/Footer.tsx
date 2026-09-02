@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { business } from "@/lib/content";
 
 export function Footer() {
@@ -16,6 +17,11 @@ export function Footer() {
           </a>
         </p>
         <p>영업시간: {business.openingTime} ~ {business.closingTime}</p>
+        <p>
+          <Link href="/blog" className="hover:text-accent">
+            블로그
+          </Link>
+        </p>
         <p>
           <a
             href={business.naverPlaceUrl}

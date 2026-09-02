@@ -8,6 +8,7 @@ const navLinks = [
   { href: "/", label: "홈" },
   { href: "/menu", label: "메뉴 소개" },
   { href: "/faq", label: "자주 묻는 질문" },
+  { href: "/blog", label: "블로그" },
   { href: "/location", label: "오시는 길" },
   { href: "/media", label: "방송·인증 이력" },
 ];
