@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { business } from "@/lib/content";
-import { ImagePlaceholder } from "@/components/ImagePlaceholder";
+import { MapEmbed } from "@/components/MapEmbed";
 import { PhoneCTA } from "@/components/PhoneCTA";
 
 export const metadata: Metadata = {
@@ -19,11 +19,17 @@ export default function LocationPage() {
       <h1 className="mt-2 text-3xl md:text-4xl font-bold text-foreground">오시는 길</h1>
 
       <div className="mt-8 grid gap-10 md:grid-cols-2">
-        <ImagePlaceholder
-          alt="석촌 위치 지도 이미지 (준비 중)"
-          caption="지도 이미지는 추후 업데이트 예정입니다."
-          aspect="aspect-square"
-        />
+        <div>
+          <MapEmbed className="h-[380px]" />
+          <a
+            href={business.naverPlaceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-block text-sm text-accent hover:text-accent-hover"
+          >
+            네이버 지도에서 보기 →
+          </a>
+        </div>
 
         <dl className="space-y-6 text-foreground-muted">
           <div>
@@ -55,14 +61,15 @@ export default function LocationPage() {
             <dd>
               하루 최대 {business.capacity.maxDailyReservations}명까지 예약을 받고 있으며,
               단체 이용이 가능합니다. 단체 예약은 {business.capacity.groupReservationLeadTime}{" "}
-              전화 예약을 권장합니다. 예약은 전화로만 받습니다.
+              전화 예약을 권장합니다. 예약은 전화로 받습니다.
             </dd>
           </div>
           <div>
-            <dt className="font-medium text-foreground">야외 좌석</dt>
+            <dt className="font-medium text-foreground">좌석</dt>
             <dd>
-              {business.facilities.outdoorSeating.capacity}석 규모의 야외 테라스 좌석을
-              갖추고 있습니다.
+              실내 약 {business.capacity.indoorSeats}석, 야외 테라스 약{" "}
+              {business.capacity.outdoorSeats}석으로 한 번에 최대{" "}
+              {business.capacity.maxGroupAtOnce}명까지 이용할 수 있습니다. 전 좌석 좌식입니다.
             </dd>
           </div>
           <div>
@@ -76,7 +83,8 @@ export default function LocationPage() {
           <div>
             <dt className="font-medium text-foreground">편의 시설</dt>
             <dd>
-              화장실은 남녀로 구분되어 있으며, 무선 결제를 지원합니다.
+              화장실은 남녀로 구분되어 있으며, 카드·무선 결제를 지원합니다.
+              승용차 주차는 20대까지 가능하며 대형버스 주차는 어렵습니다.
             </dd>
           </div>
         </dl>

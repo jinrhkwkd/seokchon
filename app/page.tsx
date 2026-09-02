@@ -4,6 +4,7 @@ import { business, menus, faqs, trustSignals } from "@/lib/content";
 import { getAllPosts, formatPostDate } from "@/lib/posts";
 import { PhoneCTA } from "@/components/PhoneCTA";
 import { ImagePlaceholder } from "@/components/ImagePlaceholder";
+import { MapEmbed } from "@/components/MapEmbed";
 import {
   JsonLd,
   buildRestaurantSchema,
@@ -372,54 +373,59 @@ export default function Home() {
 
       {/* 오시는 길 + CTA */}
       <section className="mx-auto max-w-5xl px-4 py-20">
-        <SectionHeading eyebrow="Visit" title="석촌 오시는 길" />
-        <dl className="mt-8 grid gap-6 text-foreground-muted sm:grid-cols-2">
+        <SectionHeading eyebrow="Location" title="남한산성 석촌 오시는 길" />
+        <div className="mt-8 grid gap-8 md:grid-cols-2">
+          <MapEmbed className="h-[320px] md:h-[420px]" />
           <div>
-            <dt className="font-medium text-foreground">주소</dt>
-            <dd>
-              {business.address.full} (우 {business.address.postalCode})
-            </dd>
-            <dd className="mt-1 text-sm">남한산성 로타리에서 북문 방향</dd>
-          </div>
-          <div>
-            <dt className="font-medium text-foreground">전화</dt>
-            <dd>
-              <a href={business.phoneHref} className="hover:text-accent">
-                {business.phone}
+            <dl className="grid gap-5 text-foreground-muted sm:grid-cols-2 md:grid-cols-1">
+              <div>
+                <dt className="font-medium text-foreground">주소</dt>
+                <dd>
+                  {business.address.full} (우 {business.address.postalCode})
+                </dd>
+                <dd className="mt-1 text-sm">남한산성 로타리에서 북문 방향</dd>
+              </div>
+              <div>
+                <dt className="font-medium text-foreground">전화</dt>
+                <dd>
+                  <a href={business.phoneHref} className="hover:text-accent">
+                    {business.phone}
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt className="font-medium text-foreground">영업시간</dt>
+                <dd>
+                  매일 {business.openingTime} ~ {business.closingTime} ·{" "}
+                  {business.facilities.waitTime}
+                </dd>
+              </div>
+              <div>
+                <dt className="font-medium text-foreground">주차·좌석</dt>
+                <dd>
+                  승용차 {business.parking.capacity}대 ·{" "}
+                  {business.facilities.seatingStyle}
+                </dd>
+              </div>
+            </dl>
+            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <PhoneCTA />
+              <a
+                href={business.naverPlaceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-accent hover:text-accent-hover"
+              >
+                네이버 지도에서 보기 →
               </a>
-            </dd>
+              <Link
+                href="/location"
+                className="text-sm text-accent hover:text-accent-hover"
+              >
+                오시는 길 자세히 →
+              </Link>
+            </div>
           </div>
-          <div>
-            <dt className="font-medium text-foreground">영업시간</dt>
-            <dd>
-              매일 {business.openingTime} ~ {business.closingTime} ·{" "}
-              {business.facilities.waitTime}
-            </dd>
-          </div>
-          <div>
-            <dt className="font-medium text-foreground">주차·좌석</dt>
-            <dd>
-              승용차 {business.parking.capacity}대 ·{" "}
-              {business.facilities.seatingStyle}
-            </dd>
-          </div>
-        </dl>
-        <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-          <PhoneCTA />
-          <a
-            href={business.naverPlaceUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-accent hover:text-accent-hover"
-          >
-            네이버 지도에서 보기 →
-          </a>
-          <Link
-            href="/location"
-            className="text-sm text-accent hover:text-accent-hover"
-          >
-            오시는 길 자세히 →
-          </Link>
         </div>
       </section>
     </>
