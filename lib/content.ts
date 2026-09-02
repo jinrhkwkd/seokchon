@@ -55,12 +55,16 @@ export const business = {
   reviewCountYear: 2025,
   reviewSource: "네이버 플레이스",
   naverPlaceUrl: "https://m.place.naver.com/restaurant/13421560/home",
+  naverMapUrl:
+    "https://m.place.naver.com/restaurant/13421560/location?filter=location&selected_place_id=13421560",
 };
 
 export const menus: {
   slug: string;
   name: string;
   developedInHouse: boolean;
+  /** Marked with a ★ as one of 석촌's headline baeksuk dishes. */
+  signature: boolean;
   /** Price in KRW for one whole-bird pot (삼계탕류 제외). */
   price: number;
   description: string;
@@ -70,6 +74,7 @@ export const menus: {
     slug: "hanbang-baeksuk",
     name: "한방백숙",
     developedInHouse: true,
+    signature: true,
     price: 65000,
     description:
       "석촌이 20년간 운영하며 직접 개발한 대표 메뉴입니다. 여러 한약재를 넣고 오랜 시간 끓여낸 백숙으로, 일반 백숙집에서는 맛보기 어려운 석촌만의 조리법으로 만듭니다.",
@@ -78,6 +83,7 @@ export const menus: {
     slug: "nurungji-baeksuk",
     name: "누룽지백숙",
     developedInHouse: true,
+    signature: true,
     price: 70000,
     description:
       "백숙 육수에 누룽지를 더해 끓여내는, 석촌이 직접 개발한 메뉴입니다. 백숙을 먹고 난 뒤 누룽지 죽으로 마무리하는 조리 방식으로, 남한산성 인근 백숙집 중에서도 흔치 않은 구성입니다.",
@@ -86,6 +92,7 @@ export const menus: {
     slug: "jeonbok-nurungji-baeksuk",
     name: "전복누룽지백숙",
     developedInHouse: false,
+    signature: true,
     price: 75000,
     description:
       "누룽지백숙에 전복을 더한 메뉴입니다. 백숙과 전복을 함께 끓여 깊은 맛을 낸 국물에 누룽지를 넣어 마무리합니다.",
@@ -95,6 +102,7 @@ export const menus: {
     slug: "neungi-beoseot-baeksuk",
     name: "능이버섯백숙",
     developedInHouse: false,
+    signature: true,
     price: 75000,
     description:
       "능이버섯을 넣고 끓인 백숙입니다. 능이버섯 특유의 향과 백숙 육수가 어우러지는 메뉴입니다.",
@@ -103,6 +111,7 @@ export const menus: {
     slug: "ori-jumulleok",
     name: "오리주물럭",
     developedInHouse: false,
+    signature: false,
     price: 70000,
     description:
       "오리고기를 양념에 재워 매콤하게 볶아내는 메뉴입니다. 백숙과 함께 닭고기와 오리고기 메뉴를 동시에 취급합니다.",
@@ -111,6 +120,7 @@ export const menus: {
     slug: "dakbokkeumtang",
     name: "닭볶음탕",
     developedInHouse: false,
+    signature: false,
     price: 65000,
     description:
       "닭고기를 매콤한 양념에 졸여내는 메뉴입니다. 백숙 계열 메뉴와 함께 단체 식사 자리에서 함께 주문하는 경우가 많습니다.",
@@ -242,5 +252,39 @@ export const faqs: {
     question: "단체 예약은 며칠 전에 해야 하나요?",
     answer:
       "석촌은 단체 예약 시 최소 1주일 전 전화(031-749-9338) 예약을 권장합니다. 50명 이상 대규모는 되도록 여유 있게 문의해 주세요.",
+  },
+];
+
+/**
+ * Curated Naver blog reviews of 석촌, shown in the homepage review slider.
+ * `title` / `excerpt` are optional — fill them in with the blogger's own
+ * words (kept short, attributed) once available; the slider falls back to a
+ * neutral label until then. Never paraphrase a review as if quoting it.
+ */
+export const reviews: {
+  blogId: string;
+  url: string;
+  title?: string;
+  excerpt?: string;
+}[] = [
+  {
+    blogId: "goldendaebak",
+    url: "https://blog.naver.com/goldendaebak/224398474717",
+  },
+  {
+    blogId: "best7441",
+    url: "https://blog.naver.com/best7441/224395413167",
+  },
+  {
+    blogId: "gudsla1002",
+    url: "https://blog.naver.com/gudsla1002/224395365429",
+  },
+  {
+    blogId: "sy900523",
+    url: "https://blog.naver.com/sy900523/224383088668",
+  },
+  {
+    blogId: "yougquee",
+    url: "https://blog.naver.com/yougquee/224382338801",
   },
 ];

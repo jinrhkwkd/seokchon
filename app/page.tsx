@@ -5,6 +5,7 @@ import { getAllPosts, formatPostDate } from "@/lib/posts";
 import { PhoneCTA } from "@/components/PhoneCTA";
 import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 import { MapEmbed } from "@/components/MapEmbed";
+import { ReviewSlider } from "@/components/ReviewSlider";
 import {
   JsonLd,
   buildRestaurantSchema,
@@ -108,9 +109,9 @@ export default function Home() {
       <section className="mx-auto max-w-5xl px-4 py-20">
         <SectionHeading eyebrow="Menu" title="석촌 대표 메뉴와 가격" />
         <p className="mt-3 max-w-2xl text-foreground-muted">
-          한방백숙과 누룽지백숙(<span className="text-gold">★</span>)은 석촌이 20년간
-          직접 개발해 이어온 메뉴입니다. 백숙류는 한 마리 기준으로 보통 2~4인이
-          함께 먹습니다.
+          <span className="text-gold">★</span> 표시는 석촌의 대표 백숙입니다. 이
+          중 한방백숙과 누룽지백숙은 석촌이 20년간 직접 개발해 이어온 메뉴입니다.
+          백숙류는 한 마리 기준으로 보통 2~4인이 함께 먹습니다.
         </p>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-3">
@@ -137,9 +138,14 @@ export default function Home() {
               )}
               <h3 className="font-serif-kr text-lg font-semibold text-foreground">
                 {menu.name}
-                {menu.developedInHouse && (
-                  <span className="ml-1.5 text-gold" title="석촌 직접 개발">
+                {menu.signature && (
+                  <span className="ml-1.5 text-gold" title="석촌 대표 백숙">
                     ★
+                  </span>
+                )}
+                {menu.developedInHouse && (
+                  <span className="ml-2 align-middle text-xs font-normal text-foreground-muted">
+                    직접 개발
                   </span>
                 )}
               </h3>
@@ -163,8 +169,10 @@ export default function Home() {
                 >
                   <td className="px-4 py-3 text-foreground">
                     {menu.name}
-                    {menu.developedInHouse && (
-                      <span className="ml-1.5 text-gold">★</span>
+                    {menu.signature && (
+                      <span className="ml-1.5 text-gold" title="석촌 대표 백숙">
+                        ★
+                      </span>
                     )}
                   </td>
                   <td className="px-4 py-3 text-right font-medium whitespace-nowrap text-foreground-muted">
@@ -266,48 +274,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 후기·방송 */}
+      {/* 후기 */}
       <section className="border-y border-border bg-background-alt">
         <div className="mx-auto max-w-5xl px-4 py-20">
-          <SectionHeading
-            eyebrow="Reviews"
-            title="석촌 방문 후기와 방송 이력"
-          />
-          <div className="mt-8 grid gap-6 sm:grid-cols-3">
-            <div className="rounded-lg border border-border bg-background p-6">
-              <p className="font-serif-kr text-3xl font-bold text-foreground">
-                {business.reviewCount.toLocaleString("ko-KR")}개
-              </p>
-              <p className="mt-1 text-sm text-foreground-muted">
-                {business.reviewSource} 방문자 리뷰 ({business.reviewCountYear}년
-                기준)
-              </p>
-              <a
-                href={business.naverPlaceUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-block text-sm text-accent hover:text-accent-hover"
-              >
-                네이버 플레이스에서 후기 보기 →
-              </a>
-            </div>
-            <div className="rounded-lg border border-border bg-background p-6 sm:col-span-2">
-              <p className="font-serif-kr font-semibold text-foreground">
-                KBS 방송 2회 · 안심식당 인증
-              </p>
-              <p className="mt-2 text-sm text-foreground-muted">
-                {trustSignals.broadcasts[0].description}
-              </p>
-              <p className="mt-1 text-sm text-foreground-muted">
-                {trustSignals.broadcasts[1].description}
-              </p>
-              <Link
-                href="/media"
-                className="mt-3 inline-block text-sm text-accent hover:text-accent-hover"
-              >
-                방송·인증 이력 자세히 →
-              </Link>
-            </div>
+          <SectionHeading eyebrow="Reviews" title="석촌 방문 후기" />
+          <p className="mt-3 max-w-2xl text-foreground-muted">
+            {business.reviewSource} 방문자 리뷰{" "}
+            {business.reviewCount.toLocaleString("ko-KR")}개(
+            {business.reviewCountYear}년 기준)와 네이버 블로그에 올라온 방문
+            후기입니다.
+          </p>
+          <div className="mt-8">
+            <ReviewSlider />
+          </div>
+          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            <a
+              href={business.naverPlaceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:text-accent-hover"
+            >
+              네이버 플레이스 리뷰 보기 →
+            </a>
+            <Link href="/media" className="text-accent hover:text-accent-hover">
+              KBS 방송·안심식당 인증 이력 →
+            </Link>
           </div>
         </div>
       </section>
@@ -411,7 +402,7 @@ export default function Home() {
             <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
               <PhoneCTA />
               <a
-                href={business.naverPlaceUrl}
+                href={business.naverMapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-accent hover:text-accent-hover"

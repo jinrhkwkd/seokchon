@@ -22,7 +22,7 @@ export default function LocationPage() {
         <div>
           <MapEmbed className="h-[380px]" />
           <a
-            href={business.naverPlaceUrl}
+            href={business.naverMapUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-3 inline-block text-sm text-accent hover:text-accent-hover"
