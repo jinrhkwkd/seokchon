@@ -3,6 +3,13 @@
 import { useRef } from "react";
 import { reviews } from "@/lib/content";
 
+/**
+ * Currently unused. The homepage replaced this carousel with a single
+ * "네이버 플레이스 리뷰 N개 보기" link because the review cards had no real
+ * excerpt text (only a repeated placeholder label), which read as low-trust.
+ * Kept intact so it can be re-mounted once `reviews` in lib/content.ts is
+ * filled with real, attributed excerpts from each blogger.
+ */
 export function ReviewSlider() {
   const trackRef = useRef<HTMLDivElement>(null);
 

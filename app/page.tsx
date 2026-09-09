@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import { BadgeCheck, Tv, Star, CookingPot, type LucideIcon } from "lucide-react";
 import { business, menus, faqs, trustSignals } from "@/lib/content";
 import { getAllPosts, formatPostDate } from "@/lib/posts";
 import { PhoneCTA } from "@/components/PhoneCTA";
 import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 import { MapEmbed } from "@/components/MapEmbed";
-import { ReviewSlider } from "@/components/ReviewSlider";
 import {
   JsonLd,
   buildRestaurantSchema,
@@ -209,14 +209,18 @@ export default function Home() {
             title="남한산성 백숙 전문점 석촌을 고르는 이유"
           />
           <div className="mt-10 grid gap-6 sm:grid-cols-2">
-            <TrustCard title="농림축산식품부 공식 인증 안심식당">
+            <TrustCard
+              icon={BadgeCheck}
+              title="농림축산식품부 공식 인증 안심식당"
+            >
               {trustSignals.certification.description}
             </TrustCard>
-            <TrustCard title="KBS 방송 출연 2회">
+            <TrustCard icon={Tv} title="KBS 방송 출연 2회">
               {trustSignals.broadcasts[0].description}{" "}
               {trustSignals.broadcasts[1].description}
             </TrustCard>
             <TrustCard
+              icon={Star}
               title={`${business.reviewSource} 리뷰 ${business.reviewCount.toLocaleString(
                 "ko-KR",
               )}개`}
@@ -232,7 +236,10 @@ export default function Home() {
                 네이버 플레이스에서 보기 →
               </a>
             </TrustCard>
-            <TrustCard title="직접 개발한 한방백숙·누룽지백숙">
+            <TrustCard
+              icon={CookingPot}
+              title="직접 개발한 한방백숙·누룽지백숙"
+            >
               20년간 이어온 석촌만의 조리법입니다. 백숙 육수에 누룽지를 더해
               죽으로 마무리하는 누룽지백숙은 남한산성 인근에서도 흔치 않은
               구성입니다.
@@ -245,10 +252,15 @@ export default function Home() {
       <section className="mx-auto max-w-5xl px-4 py-20">
         <SectionHeading eyebrow="Group" title="남한산성 단체·회식·대형 예약" />
         <div className="mt-8 grid gap-8 md:grid-cols-2">
-          <ImagePlaceholder
-            alt="석촌 단체석 (준비 중)"
-            aspect="aspect-[4/3]"
-          />
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg border border-border">
+            <Image
+              src="/images/group-terrace.webp"
+              alt="석촌 야외 테라스 단체석 — 긴 원목 테이블이 창가를 따라 늘어선 실내 단체 좌석"
+              fill
+              className="object-cover"
+              sizes="(min-width: 768px) 50vw, 100vw"
+            />
+          </div>
           <ul className="space-y-3 text-foreground-muted">
             {[
               ["수용 규모", "실내 100석 + 야외 테라스 100석, 한 번에 최대 200명"],
@@ -279,24 +291,25 @@ export default function Home() {
         <div className="mx-auto max-w-5xl px-4 py-20">
           <SectionHeading eyebrow="Reviews" title="석촌 방문 후기" />
           <p className="mt-3 max-w-2xl text-foreground-muted">
-            {business.reviewSource} 방문자 리뷰{" "}
+            석촌은 {business.reviewSource} 기준 방문자 리뷰{" "}
             {business.reviewCount.toLocaleString("ko-KR")}개(
-            {business.reviewCountYear}년 기준)와 네이버 블로그에 올라온 방문
-            후기입니다.
+            {business.reviewCountYear}년 기준)로 남한산성 인근 백숙 전문점 중 최다
+            수준입니다. 실제 방문 후기는 네이버 플레이스에서 확인하실 수 있습니다.
           </p>
-          <div className="mt-8">
-            <ReviewSlider />
-          </div>
-          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+          <div className="mt-8 flex flex-wrap items-center gap-4">
             <a
               href={business.naverPlaceUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-accent hover:text-accent-hover"
+              className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 font-medium text-accent-foreground transition-colors hover:bg-accent-hover"
             >
-              네이버 플레이스 리뷰 보기 →
+              네이버 플레이스 리뷰 {business.reviewCount.toLocaleString("ko-KR")}개
+              보기 →
             </a>
-            <Link href="/media" className="text-accent hover:text-accent-hover">
+            <Link
+              href="/media"
+              className="text-sm text-accent hover:text-accent-hover"
+            >
               KBS 방송·안심식당 인증 이력 →
             </Link>
           </div>
@@ -437,15 +450,20 @@ function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) 
 }
 
 function TrustCard({
+  icon: Icon,
   title,
   children,
 }: {
+  icon: LucideIcon;
   title: string;
   children: React.ReactNode;
 }) {
   return (
     <div className="rounded-lg border border-border bg-background p-6">
-      <h3 className="font-serif-kr text-lg font-semibold text-foreground">
+      <span className="flex h-11 w-11 items-center justify-center rounded-full bg-accent/10 text-accent">
+        <Icon className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
+      </span>
+      <h3 className="mt-4 font-serif-kr text-lg font-semibold text-foreground">
         {title}
       </h3>
       <p className="mt-2 text-sm text-foreground-muted">{children}</p>

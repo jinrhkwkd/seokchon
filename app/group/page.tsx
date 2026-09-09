@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { business } from "@/lib/content";
 import { PhoneCTA } from "@/components/PhoneCTA";
-import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 import {
   JsonLd,
   buildBreadcrumbSchema,
@@ -106,11 +106,15 @@ export default function GroupPage() {
         </table>
       </div>
 
-      <ImagePlaceholder
-        alt="석촌 단체석 (준비 중)"
-        aspect="aspect-[16/9]"
-        className="mt-8"
-      />
+      <div className="mt-8 relative aspect-[16/9] w-full overflow-hidden rounded-lg border border-border">
+        <Image
+          src="/images/group-terrace.webp"
+          alt="석촌 야외 테라스 단체석 — 긴 원목 테이블이 창가를 따라 늘어선 실내 단체 좌석"
+          fill
+          className="object-cover"
+          sizes="(min-width: 768px) 768px, 100vw"
+        />
+      </div>
 
       <h2 className="mt-12 font-serif-kr text-xl md:text-2xl font-bold text-foreground">
         인원별 예약 방법
