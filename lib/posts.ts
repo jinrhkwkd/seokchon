@@ -25,6 +25,12 @@ export type Post = {
   targetQuery: string;
   /** Rough read time in minutes, shown to readers. */
   readingMinutes: number;
+  /**
+   * Card thumbnail for the /blog listing, e.g. "/images/blog/<slug>.webp".
+   * Optional — the listing shows a branded fallback until one is set.
+   * A landscape image (4:3) works best.
+   */
+  thumbnail?: string;
   body: PostBlock[];
   /** Optional Q&A block. Also emitted as FAQPage JSON-LD. */
   faq?: PostFaq[];

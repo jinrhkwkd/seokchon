@@ -43,6 +43,7 @@ export async function generateMetadata({
       type: "article",
       publishedTime: post.publishedAt,
       modifiedTime: post.updatedAt ?? post.publishedAt,
+      ...(post.thumbnail ? { images: [post.thumbnail] } : {}),
     },
   };
 }
