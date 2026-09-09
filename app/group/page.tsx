@@ -45,6 +45,11 @@ const groupFaqs = [
   },
 ];
 
+const indoorPhotos = [1, 2, 3, 4, 5].map(
+  (n) => `/images/group/indoor-${n}.webp`,
+);
+const outdoorPhotos = [1, 2].map((n) => `/images/group/outdoor-${n}.webp`);
+
 export default function GroupPage() {
   return (
     <article className="mx-auto max-w-3xl px-4 py-16">
@@ -106,15 +111,53 @@ export default function GroupPage() {
         </table>
       </div>
 
-      <div className="mt-8 relative aspect-[16/9] w-full overflow-hidden rounded-lg border border-border">
-        <Image
-          src="/images/group-terrace.webp"
-          alt="석촌 야외 테라스 단체석 — 긴 원목 테이블이 창가를 따라 늘어선 실내 단체 좌석"
-          fill
-          className="object-cover"
-          sizes="(min-width: 768px) 768px, 100vw"
-        />
-      </div>
+      <h2 className="mt-12 font-serif-kr text-xl md:text-2xl font-bold text-foreground">
+        매장 실내·야외 단체석
+      </h2>
+      <p className="mt-3 leading-relaxed text-foreground-muted">
+        실내 약 100석과 야외 테라스 약 100석을 갖춰, 100명 이상 단체는 실내와
+        야외로 나눠 한자리에서 받습니다.
+      </p>
+
+      <h3 className="mt-6 font-serif-kr font-semibold text-foreground">
+        실내 단체석
+      </h3>
+      <ul className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
+        {indoorPhotos.map((src, i) => (
+          <li
+            key={src}
+            className="relative aspect-[4/3] overflow-hidden rounded-lg border border-border bg-background-alt"
+          >
+            <Image
+              src={src}
+              alt={`석촌 실내 단체석 ${i + 1} — 원목 좌식 테이블이 늘어선 홀`}
+              fill
+              className="object-cover"
+              sizes="(min-width: 640px) 240px, 45vw"
+            />
+          </li>
+        ))}
+      </ul>
+
+      <h3 className="mt-6 font-serif-kr font-semibold text-foreground">
+        야외 테라스석
+      </h3>
+      <ul className="mt-3 grid grid-cols-2 gap-3">
+        {outdoorPhotos.map((src, i) => (
+          <li
+            key={src}
+            className="relative aspect-[4/3] overflow-hidden rounded-lg border border-border bg-background-alt"
+          >
+            <Image
+              src={src}
+              alt={`석촌 야외 테라스 단체석 ${i + 1} — 그늘막 아래 긴 테이블`}
+              fill
+              className="object-cover"
+              sizes="(min-width: 640px) 370px, 45vw"
+            />
+          </li>
+        ))}
+      </ul>
 
       <h2 className="mt-12 font-serif-kr text-xl md:text-2xl font-bold text-foreground">
         인원별 예약 방법
