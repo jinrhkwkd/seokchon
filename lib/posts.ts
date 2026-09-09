@@ -48,6 +48,7 @@ export const posts: Post[] = [
     publishedAt: "2026-09-09",
     targetQuery: "부모님 모시고 남한산성",
     readingMinutes: 7,
+    thumbnail: "/images/blog/bumonim-mosigo-namhansanseong.webp",
     body: [
       {
         type: "qa",
@@ -211,6 +212,7 @@ export const posts: Post[] = [
     publishedAt: "2026-09-08",
     targetQuery: "남한산성 주차 식당",
     readingMinutes: 7,
+    thumbnail: "/images/blog/namhansanseong-juchajang-sikdang.webp",
     body: [
       {
         type: "qa",
@@ -386,6 +388,7 @@ export const posts: Post[] = [
     publishedAt: "2026-09-07",
     targetQuery: "남한산성 단체 회식",
     readingMinutes: 8,
+    thumbnail: "/images/blog/namhansanseong-danche-hoesik.webp",
     body: [
       {
         type: "qa",
@@ -585,6 +588,7 @@ export const posts: Post[] = [
     publishedAt: "2026-09-06",
     targetQuery: "남한산성 등산 후 밥",
     readingMinutes: 8,
+    thumbnail: "/images/blog/namhansanseong-deungsan-baeksuk.webp",
     body: [
       {
         type: "qa",
@@ -777,6 +781,7 @@ export const posts: Post[] = [
     publishedAt: "2026-09-04",
     targetQuery: "추석 가족 외식",
     readingMinutes: 8,
+    thumbnail: "/images/blog/chuseok-gajok-oesik-namhansanseong.webp",
     body: [
       {
         type: "qa",
@@ -946,6 +951,7 @@ export const posts: Post[] = [
     publishedAt: "2026-09-02",
     targetQuery: "남한산성 백숙 맛집",
     readingMinutes: 8,
+    thumbnail: "/images/blog/namhansanseong-baeksuk-matjip.webp",
     body: [
       {
         type: "qa",
@@ -1118,6 +1124,7 @@ export const posts: Post[] = [
     publishedAt: "2026-09-03",
     targetQuery: "남한산성 백숙 가격",
     readingMinutes: 9,
+    thumbnail: "/images/blog/namhansanseong-baeksuk-gagyeok.webp",
     body: [
       {
         type: "callout",
