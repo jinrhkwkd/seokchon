@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import { JsonLd, buildLocalBusinessSchema, siteUrl } from "@/lib/schema";
 
 const nanumMyeongjo = Nanum_Myeongjo({
@@ -74,6 +75,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <main className="flex-1">{children}</main>
           <div className="wall-crest" aria-hidden="true" />
           <Footer />
+          <ScrollReveal />
         </ThemeProvider>
         <JsonLd data={buildLocalBusinessSchema()} />
       </body>

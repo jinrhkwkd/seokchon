@@ -6,6 +6,7 @@ import { getAllPosts, formatPostDate } from "@/lib/posts";
 import { PhoneCTA } from "@/components/PhoneCTA";
 import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 import { MapEmbed } from "@/components/MapEmbed";
+import { BlogCard, type BlogCardData } from "@/components/BlogCard";
 import {
   JsonLd,
   buildRestaurantSchema,
@@ -22,7 +23,18 @@ const FEATURED_SLUGS = [
 
 export default function Home() {
   const homeFaqs = faqs.filter((faq) => faq.onHomepage);
-  const latestPosts = getAllPosts().slice(0, 3);
+  const latestCards: BlogCardData[] = getAllPosts()
+    .slice(0, 3)
+    .map((post) => ({
+      slug: post.slug,
+      title: post.title,
+      description: post.description,
+      dateLabel: formatPostDate(post.publishedAt),
+      publishedAt: post.publishedAt,
+      readingMinutes: post.readingMinutes,
+      targetQuery: post.targetQuery,
+      thumbnail: post.thumbnail,
+    }));
   const featured = menus.filter((menu) => FEATURED_SLUGS.includes(menu.slug));
 
   return (
@@ -83,7 +95,10 @@ export default function Home() {
 
       {/* 숫자 스트립 — 화강암 현판 */}
       <section className="bg-stone">
-        <dl className="mx-auto grid max-w-5xl grid-cols-2 sm:grid-cols-4">
+        <dl
+          data-reveal-stagger
+          className="mx-auto grid max-w-5xl grid-cols-2 sm:grid-cols-4"
+        >
           {[
             { n: `${business.yearsInOperation}년`, l: "한자리에서 운영" },
             {
@@ -97,7 +112,10 @@ export default function Home() {
               key={stat.l}
               className="border-t border-stone-foreground/15 px-4 py-8 text-center first:border-t-0 sm:border-t-0 sm:border-l sm:first:border-l-0"
             >
-              <dt className="font-serif-kr text-2xl font-bold text-stone-foreground md:text-3xl">
+              <dt
+                data-countup
+                className="font-serif-kr text-2xl font-bold text-stone-foreground md:text-3xl"
+              >
                 {stat.n}
               </dt>
               <dd className="mt-1 text-xs text-stone-foreground/70 md:text-sm">
@@ -111,13 +129,13 @@ export default function Home() {
       {/* 대표 메뉴 + 가격 */}
       <section className="mx-auto max-w-5xl px-4 py-20">
         <SectionHeading eyebrow="Menu" title="석촌 대표 메뉴와 가격" />
-        <p className="mt-3 max-w-2xl text-foreground-muted">
+        <p data-reveal className="mt-3 max-w-2xl text-foreground-muted">
           <span className="text-gold">★</span> 표시는 석촌의 대표 백숙입니다. 이
           중 한방백숙과 누룽지백숙은 석촌이 20년간 직접 개발해 이어온 메뉴입니다.
           백숙류는 한 마리 기준으로 보통 2~4인이 함께 먹습니다.
         </p>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-3">
+        <div data-reveal-stagger className="mt-10 grid gap-6 sm:grid-cols-3">
           {featured.map((menu) => (
             <article
               key={menu.slug}
@@ -162,7 +180,10 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="mt-10 overflow-x-auto rounded-lg border border-border">
+        <div
+          data-reveal
+          className="mt-10 overflow-x-auto rounded-lg border border-border"
+        >
           <table className="w-full border-collapse text-sm">
             <tbody>
               {menus.map((menu) => (
@@ -191,7 +212,10 @@ export default function Home() {
           변동될 수 있습니다.
         </p>
 
-        <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+        <div
+          data-reveal
+          className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm"
+        >
           <Link href="/menu" className="text-accent hover:text-accent-hover">
             전체 메뉴 보기 →
           </Link>
@@ -211,7 +235,7 @@ export default function Home() {
             eyebrow="Why"
             title="남한산성 백숙 전문점 석촌을 고르는 이유"
           />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2">
+          <div data-reveal-stagger className="mt-10 grid gap-6 sm:grid-cols-2">
             <TrustCard
               icon={BadgeCheck}
               title="농림축산식품부 공식 인증 안심식당"
@@ -254,7 +278,7 @@ export default function Home() {
       {/* 단체·대형 예약 */}
       <section className="mx-auto max-w-5xl px-4 py-20">
         <SectionHeading eyebrow="Group" title="남한산성 단체·회식·대형 예약" />
-        <div className="mt-8 grid gap-8 md:grid-cols-2">
+        <div data-reveal className="mt-8 grid gap-8 md:grid-cols-2">
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg border border-border">
             <Image
               src="/images/group-terrace.webp"
@@ -281,7 +305,10 @@ export default function Home() {
             ))}
           </ul>
         </div>
-        <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+        <div
+          data-reveal
+          className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3"
+        >
           <PhoneCTA label={`단체 예약 문의 (${business.phone})`} />
           <Link href="/group" className="text-sm text-accent hover:text-accent-hover">
             단체·대형 예약 안내 자세히 →
@@ -293,13 +320,13 @@ export default function Home() {
       <section className="border-y border-border bg-background-alt">
         <div className="mx-auto max-w-5xl px-4 py-20">
           <SectionHeading eyebrow="Reviews" title="석촌 방문 후기" />
-          <p className="mt-3 max-w-2xl text-foreground-muted">
+          <p data-reveal className="mt-3 max-w-2xl text-foreground-muted">
             석촌은 {business.reviewSource} 기준 방문자 리뷰{" "}
             {business.reviewCount.toLocaleString("ko-KR")}개(
             {business.reviewCountYear}년 기준)로 남한산성 인근 백숙 전문점 중 최다
             수준입니다. 실제 방문 후기는 네이버 플레이스에서 확인하실 수 있습니다.
           </p>
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          <div data-reveal className="mt-8 flex flex-wrap items-center gap-4">
             <a
               href={business.naverPlaceUrl}
               target="_blank"
@@ -330,21 +357,13 @@ export default function Home() {
             블로그 전체 보기 →
           </Link>
         </div>
-        <ul className="mt-10 divide-y divide-border border-y border-border">
-          {latestPosts.map((post) => (
-            <li key={post.slug} className="py-5">
-              <div className="text-xs text-foreground-muted">
-                {formatPostDate(post.publishedAt)} · {post.readingMinutes}분 읽기
-              </div>
-              <Link
-                href={`/blog/${post.slug}`}
-                className="mt-1 block font-serif-kr text-lg font-semibold text-foreground hover:text-accent"
-              >
-                {post.title}
-              </Link>
-              <p className="mt-1 line-clamp-2 text-sm text-foreground-muted">
-                {post.description}
-              </p>
+        <ul
+          data-reveal-stagger
+          className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {latestCards.map((post) => (
+            <li key={post.slug}>
+              <BlogCard post={post} />
             </li>
           ))}
         </ul>
@@ -365,7 +384,10 @@ export default function Home() {
               전체 보기 →
             </Link>
           </div>
-          <div className="mt-8 divide-y divide-border border-y border-border">
+          <div
+            data-reveal
+            className="mt-8 divide-y divide-border border-y border-border"
+          >
             {homeFaqs.map((faq) => (
               <details key={faq.question} className="group py-4">
                 <summary className="cursor-pointer list-none font-serif-kr font-semibold text-foreground">
@@ -381,7 +403,7 @@ export default function Home() {
       {/* 오시는 길 + CTA */}
       <section className="mx-auto max-w-5xl px-4 py-20">
         <SectionHeading eyebrow="Location" title="남한산성 석촌 오시는 길" />
-        <div className="mt-8 grid gap-8 md:grid-cols-2">
+        <div data-reveal className="mt-8 grid gap-8 md:grid-cols-2">
           <MapEmbed className="h-[320px] md:h-[420px]" />
           <div>
             <dl className="grid gap-5 text-foreground-muted sm:grid-cols-2 md:grid-cols-1">
@@ -441,7 +463,7 @@ export default function Home() {
 
 function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
-    <div>
+    <div data-reveal>
       <p className="flex items-center gap-2.5 text-xs font-semibold tracking-[0.25em] text-foreground-muted uppercase">
         <span aria-hidden className="h-px w-6 bg-accent" />
         {eyebrow}
