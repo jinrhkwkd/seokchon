@@ -72,6 +72,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
           <main className="flex-1">{children}</main>
+          <div className="wall-crest" aria-hidden="true" />
           <Footer />
         </ThemeProvider>
         <JsonLd data={buildLocalBusinessSchema()} />

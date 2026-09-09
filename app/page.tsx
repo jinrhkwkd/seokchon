@@ -78,8 +78,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 숫자 스트립 */}
-      <section className="border-b border-border bg-background-alt">
+      {/* 여장(성가퀴) — 성벽 위 낮은 담 */}
+      <div className="wall-crest" aria-hidden="true" />
+
+      {/* 숫자 스트립 — 화강암 현판 */}
+      <section className="bg-stone">
         <dl className="mx-auto grid max-w-5xl grid-cols-2 sm:grid-cols-4">
           {[
             { n: `${business.yearsInOperation}년`, l: "한자리에서 운영" },
@@ -92,12 +95,12 @@ export default function Home() {
           ].map((stat) => (
             <div
               key={stat.l}
-              className="border-t border-border px-4 py-8 text-center first:border-t-0 sm:border-t-0 sm:border-l sm:first:border-l-0"
+              className="border-t border-stone-foreground/15 px-4 py-8 text-center first:border-t-0 sm:border-t-0 sm:border-l sm:first:border-l-0"
             >
-              <dt className="font-serif-kr text-2xl font-bold text-foreground md:text-3xl">
+              <dt className="font-serif-kr text-2xl font-bold text-stone-foreground md:text-3xl">
                 {stat.n}
               </dt>
-              <dd className="mt-1 text-xs text-foreground-muted md:text-sm">
+              <dd className="mt-1 text-xs text-stone-foreground/70 md:text-sm">
                 {stat.l}
               </dd>
             </div>
@@ -439,10 +442,11 @@ export default function Home() {
 function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <div>
-      <p className="text-xs font-semibold tracking-[0.25em] uppercase text-accent">
+      <p className="flex items-center gap-2.5 text-xs font-semibold tracking-[0.25em] text-foreground-muted uppercase">
+        <span aria-hidden className="h-px w-6 bg-accent" />
         {eyebrow}
       </p>
-      <h2 className="mt-2 text-2xl md:text-3xl font-bold text-foreground">
+      <h2 className="mt-3 text-2xl md:text-3xl font-bold text-foreground">
         {title}
       </h2>
     </div>
@@ -460,7 +464,7 @@ function TrustCard({
 }) {
   return (
     <div className="rounded-lg border border-border bg-background p-6">
-      <span className="flex h-11 w-11 items-center justify-center rounded-full bg-accent/10 text-accent">
+      <span className="flex h-11 w-11 items-center justify-center rounded-full bg-pine/10 text-pine">
         <Icon className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
       </span>
       <h3 className="mt-4 font-serif-kr text-lg font-semibold text-foreground">

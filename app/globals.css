@@ -2,30 +2,47 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/*
+ * Palette — "석성(石城)": 남한산성의 화강암 성곽 · 검은 기와 · 성문 주칠(朱漆) · 솔숲.
+ * 화강암 빛 중립 바탕 + 기와빛 먹색 글자 + 성문 붉은칠 강조 + 소나무 녹색 보조.
+ */
 :root {
-  --background: #f7f2e7;
-  --background-alt: #efe6d2;
-  --foreground: #262220;
-  --foreground-muted: #6b6258;
-  --border: #ddd0b0;
-  --accent: #a97a1c;
-  --accent-hover: #8a6216;
-  --accent-foreground: #fffaf0;
-  --gold: #c9a227;
-  --grain-opacity: 0.05;
+  --background: #f4f1ea;
+  --background-alt: #e7e3d8;
+  --foreground: #211f1b;
+  --foreground-muted: #5b5348;
+  --border: #cec6b5;
+  --accent: #97392b;
+  --accent-hover: #7c2c20;
+  --accent-foreground: #faf5ec;
+  --pine: #33513c;
+  --pine-hover: #274031;
+  --stone: #5b5348;
+  --stone-foreground: #f1ede3;
+  --gold: #9c7b2f;
+
+  /* 성벽 석재 줄눈 질감 */
+  --wall-ink: 0, 0, 0;
+  --wall-opacity: 0.03;
 }
 
 .dark {
-  --background: #16130f;
-  --background-alt: #201b14;
-  --foreground: #f0ebe0;
-  --foreground-muted: #b3a996;
+  --background: #14130f;
+  --background-alt: #1e1b15;
+  --foreground: #ece7db;
+  --foreground-muted: #a89f8c;
   --border: #33291c;
-  --accent: #d4af37;
-  --accent-hover: #e6c25c;
-  --accent-foreground: #16130f;
-  --gold: #e0bf5a;
-  --grain-opacity: 0.03;
+  --accent: #c76b52;
+  --accent-hover: #d6866e;
+  --accent-foreground: #14130f;
+  --pine: #7fa588;
+  --pine-hover: #98b89f;
+  --stone: #b3a996;
+  --stone-foreground: #1a1712;
+  --gold: #cfae52;
+
+  --wall-ink: 255, 255, 255;
+  --wall-opacity: 0.028;
 }
 
 @theme inline {
@@ -37,19 +54,35 @@
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-accent-foreground: var(--accent-foreground);
+  --color-pine: var(--pine);
+  --color-pine-hover: var(--pine-hover);
+  --color-stone: var(--stone);
+  --color-stone-foreground: var(--stone-foreground);
   --color-gold: var(--gold);
   --font-serif-kr: var(--font-nanum-myeongjo);
   --font-sans-kr: var(--font-nanum-gothic);
+
+  /* 마름돌·목재처럼 모서리를 조인다 (전역) */
+  --radius-sm: 0.0625rem;
+  --radius-md: 0.125rem;
+  --radius-lg: 0.1875rem;
+  --radius-xl: 0.25rem;
 }
 
 body {
   background-color: var(--color-background);
-  background-image: radial-gradient(
-    circle at 1px 1px,
-    rgba(0, 0, 0, var(--grain-opacity)) 1px,
-    transparent 0
-  );
-  background-size: 20px 20px;
+  /* 멀리서 본 성벽 면 — 가로 켜(course) + 세로 이음(joint), 아주 옅게 */
+  background-image:
+    repeating-linear-gradient(
+      180deg,
+      transparent 0 47px,
+      rgba(var(--wall-ink), var(--wall-opacity)) 47px 48px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 93px,
+      rgba(var(--wall-ink), calc(var(--wall-opacity) * 0.5)) 93px 94px
+    );
   color: var(--color-foreground);
   font-family: var(--font-sans-kr), sans-serif;
   word-break: keep-all;
@@ -59,7 +92,7 @@ body {
 h1, h2, h3, h4 {
   font-family: var(--font-serif-kr), serif;
   word-break: keep-all;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
 }
 
 @keyframes hero-focus-in {
@@ -72,7 +105,7 @@ h1, h2, h3, h4 {
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
     filter: blur(0);
   }
 }
@@ -108,6 +141,18 @@ h1, h2, h3, h4 {
 
 .hero-media {
   animation: hero-zoom 6s ease-out both;
+}
+
+/* 여장(성가퀴) — 성벽 위 총안이 뚫린 낮은 담. 히어로·푸터 경계 장식. */
+.wall-crest {
+  height: 10px;
+  background-color: var(--color-stone);
+  -webkit-mask: repeating-linear-gradient(
+    90deg,
+    #000 0 22px,
+    transparent 22px 34px
+  );
+  mask: repeating-linear-gradient(90deg, #000 0 22px, transparent 22px 34px);
 }
 
 @media (prefers-reduced-motion: reduce) {
