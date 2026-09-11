@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { trustSignals } from "@/lib/content";
 import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 
@@ -39,11 +40,23 @@ export default function MediaPage() {
             key={broadcast.date}
             className="rounded-lg border border-border bg-background-alt p-6"
           >
-            <ImagePlaceholder
-              alt={`${broadcast.program} ${broadcast.dateDisplay} 방송 캡처 이미지 (준비 중)`}
-              aspect="aspect-video"
-              className="mb-4"
-            />
+            {broadcast.image ? (
+              <div className="relative mb-4 aspect-[4/3] w-full overflow-hidden rounded-lg bg-background">
+                <Image
+                  src={broadcast.image}
+                  alt={`${broadcast.program}${broadcast.episode ? ` ${broadcast.episode}` : ""} (${broadcast.dateDisplay}) 방송 소개 액자 사진`}
+                  fill
+                  className="object-contain"
+                  sizes="(min-width: 768px) 700px, 100vw"
+                />
+              </div>
+            ) : (
+              <ImagePlaceholder
+                alt={`${broadcast.program} ${broadcast.dateDisplay} 방송 캡처 이미지 (준비 중)`}
+                aspect="aspect-video"
+                className="mb-4"
+              />
+            )}
             <h3 className="font-serif-kr text-lg font-semibold text-foreground">
               {broadcast.program}
               {broadcast.episode ? ` ${broadcast.episode}` : ""} ({broadcast.dateDisplay})

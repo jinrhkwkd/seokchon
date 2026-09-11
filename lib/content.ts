@@ -106,6 +106,7 @@ export const menus: {
     price: 75000,
     description:
       "능이버섯을 넣고 끓인 백숙입니다. 능이버섯 특유의 향과 백숙 육수가 어우러지는 메뉴입니다.",
+    photo: "/images/neungi-beoseot-baeksuk.webp",
   },
   {
     slug: "ori-jumulleok",
@@ -143,6 +144,7 @@ export const trustSignals = {
       topic: "토종닭전복백숙",
       description:
         "KBS 2TV 생생정보 96회(2016년 5월 24일 방송)에 토종닭전복백숙 맛집으로 소개되었습니다.",
+      image: "/images/media/kbs-saengsaeng-2016.webp",
     },
     {
       program: "KBS 생생정보 & 세상의 아침",
@@ -152,6 +154,7 @@ export const trustSignals = {
       topic: undefined as string | undefined,
       description:
         "KBS 생생정보 및 세상의 아침(2008년 7월 7일 방송)에 소개되었습니다.",
+      image: "/images/media/kbs-sesangeuiachim-2008.webp",
     },
   ],
 };
